@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Content Assistant</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Web Content Assistant</h1>
+      <button id="toggleTheme" class="theme-toggle" aria-label="Toggle theme">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+      </button>
+    </div>
+
+    <div class="summary-section">
+      <div class="summary-controls">
+        <button id="generateSummary" class="primary-button">Generate Summary</button>
+        <div class="summary-length">
+          <label for="summaryLength">Length:</label>
+          <select id="summaryLength">
+            <option value="50">50 words</option>
+            <option value="100" selected>100 words</option>
+            <option value="200">200 words</option>
+          </select>
+        </div>
+      </div>
+      <div id="summaryResult" class="result-area">
+        <p class="placeholder">Summary will appear here...</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="question-section">
+      <div class="input-group">
+        <input type="text" id="questionInput" placeholder="Ask a question about this page">
+        <button id="submitQuestion" class="primary-button">Ask</button>
+      </div>
+      <div id="answerResult" class="result-area">
+        <p class="placeholder">Answer will appear here...</p>
+      </div>
+      <button id="locateOnPage" class="secondary-button" style="display: none;">Locate on Page</button>
+      
+      <div id="followupContainer" class="followup-container" style="display: none;">
+        <h3>Follow-up Questions:</h3>
+        <ul id="followupQuestions" class="followup-list"></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p id="status" class="status">Ready</p>
+      <button id="settingsButton" class="icon-button" aria-label="Settings">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="settingsModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Settings</h2>
+      <div class="settings-group">
+        <label for="apiKey">Gemini API Key:</label>
+        <input type="password" id="apiKey" placeholder="Enter your API key">
+        <button id="saveApiKey" class="primary-button">Save</button>
+      </div>
+      <div class="settings-group">
+        <label>Theme:</label>
+        <div class="theme-options">
+          <button id="lightTheme" class="theme-button">Light</button>
+          <button id="darkTheme" class="theme-button">Dark</button>
+          <button id="systemTheme" class="theme-button">System</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
